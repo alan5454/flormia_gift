@@ -1,0 +1,38 @@
+/* 1. Portada */
+.portada h1{font-size:clamp(3.4rem,9vw,7.5rem);max-width:9ch}
+.portada p{font-size:1.2rem}
+.portada .ramo-deco{position:absolute;right:-6%;bottom:-8%;width:55%;aspect-ratio:1;border-radius:50%;z-index:0;
+  background:radial-gradient(circle at 40% 40%,#F6C9B4 0 18%,#F3D5D0 19% 38%,#DCD0EA 39% 52%,transparent 53%)}
+/* 2. Tipos de flores */
+.rejilla-flores{display:grid;grid-template-columns:repeat(3,1fr);gap:1.5rem}
+.flor{display:grid;grid-template-columns:minmax(90px,40%) 1fr;align-items:center;gap:1.2rem}
+.flor .img{aspect-ratio:3/4}
+/* 3-4. Ramos */
+.rejilla-ramos{display:grid;grid-template-columns:repeat(3,1fr);gap:2rem;text-align:center}
+.ramo .img{margin-bottom:1rem}
+.ramo--tarjeta{background:rgba(251,230,218,.5);padding-bottom:1.2rem}
+.ramo--tarjeta .img{margin-bottom:.8rem}
+/* 5. Arreglos: imagen en arco */
+.rejilla-arreglos{display:grid;grid-template-columns:repeat(4,1fr);gap:1.5rem;text-align:center}
+.arreglo .img{border-radius:999px 999px 0 0;aspect-ratio:3/4;margin-bottom:1rem}
+.arreglo hr{border:0;border-top:1px solid var(--rosa-suave);margin:.6rem auto;width:70%}
+/* 6. Personalización */
+.personaliza{display:grid;grid-template-columns:1fr 1fr;gap:3rem;align-items:center}
+.extra{display:flex;align-items:center;gap:1rem;padding:.9rem 0;border-bottom:1px solid var(--rosa-suave);cursor:pointer}
+.extra input{accent-color:var(--rosa);width:1.2rem;height:1.2rem}
+.extra .icono{width:48px;height:48px;border-radius:50%;background:var(--durazno);display:grid;place-items:center;font-size:1.3rem}
+.extra:nth-child(even) .icono{background:var(--lavanda)}
+.extra h3{flex:1;font-size:1.35rem}
+.total{display:flex;justify-content:space-between;align-items:baseline;padding-top:1rem}
+/* 7. Contacto */
+.contacto{display:grid;grid-template-columns:1.1fr 1fr;gap:3rem;align-items:center}
+.contacto h2{margin-bottom:1rem}
+.contacto dl{display:grid;grid-template-columns:9rem 1fr;gap:.9rem 1rem;margin-top:2rem}
+.contacto dt{color:var(--salvia);font-family:var(--f-titulo);font-size:1.2rem}
+.contacto dd{background:var(--durazno);padding:.5rem 1rem;border-radius:3px}
+.contacto .img{aspect-ratio:4/5}
+@media (max-width:860px){
+  .rejilla-flores,.rejilla-ramos,.personaliza,.contacto{grid-template-columns:1fr}
+  .rejilla-arreglos{grid-template-columns:repeat(2,1fr)}
+  .seccion{min-height:auto}
+}

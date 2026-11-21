@@ -1,0 +1,25 @@
+/* Tokens y base — tomados de la referencia de Canva */
+:root{
+  --crema:#FAF6F1; --rosa:#D4877F; --rosa-suave:#F3D5D0; --durazno:#FBE6DA;
+  --salvia:#A9AE8A; --lavanda:#DCD0EA; --texto:#6B6561;
+  --f-titulo:"Cormorant Garamond",Georgia,serif;
+  --f-texto:"Jost",system-ui,sans-serif;
+}
+*{box-sizing:border-box;margin:0}
+html{scroll-snap-type:y proximity;scroll-behavior:smooth}
+body{background:var(--crema);color:var(--texto);font:400 1.05rem/1.6 var(--f-texto)}
+h1,h2,h3{font-family:var(--f-titulo);font-weight:400;color:var(--rosa);line-height:1.05}
+h2{font-size:clamp(2.6rem,6vw,4.6rem)}
+h3{font-size:1.5rem;color:var(--salvia)}
+.precio{font-family:var(--f-titulo);font-size:2rem;color:var(--rosa)}
+.seccion{position:relative;min-height:100vh;padding:clamp(2rem,6vw,5rem);overflow:hidden;scroll-snap-align:start;display:flex;flex-direction:column;justify-content:center;gap:2rem}
+.seccion>*{position:relative;z-index:1}
+:focus-visible{outline:2px solid var(--rosa);outline-offset:3px}
+/* Manchas de acuarela (decoración de cada lámina) */
+.mancha{position:absolute!important;z-index:0!important;width:340px;height:260px;border-radius:50%;filter:blur(38px);opacity:.7;pointer-events:none}
+.mancha--rosa{background:var(--rosa-suave)}.mancha--lavanda{background:var(--lavanda)}
+.mancha--salvia{background:#C5CBA9}.mancha--durazno{background:#F6C9B4}
+.tl{top:-90px;left:-90px}.tr{top:-90px;right:-90px}.bl{bottom:-100px;left:-100px}.br{bottom:-100px;right:-100px}
+/* Hueco de imagen: se reemplaza por <img> en la etapa 2 */
+.img{background:linear-gradient(135deg,var(--rosa-suave),var(--lavanda));aspect-ratio:1;display:grid;place-items:center;color:#fff;font-family:var(--f-titulo);font-size:1.2rem}
+@media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
