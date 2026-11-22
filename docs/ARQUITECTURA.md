@@ -10,7 +10,6 @@ catalogo_floral/
 │   ├── management/commands/ # cargar_datos.py (datos de ejemplo)
 │   └── templates/catalogo/  # base.html, index.html, partials/ (1 por sección)
 ├── static/{css,js,img/{flores,ramos,arreglos,extras}}
-├── prototype/index.html     # diseño base estático (etapa 1)
 └── docs/
 
 Modelos: TipoFlor, Ramo(categoria: clasico|temporada), Arreglo, Extra, Contacto (1 fila).

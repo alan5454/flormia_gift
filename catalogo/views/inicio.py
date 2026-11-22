@@ -1,10 +1,12 @@
 from django.shortcuts import render
 
-from .models import Arreglo, Contacto, Extra, Ramo, TipoFlor
+from catalogo.models import Arreglo, Contacto, Extra, Ramo, TipoFlor
 
 
 def inicio(request):
-    """Página principal: lee el catálogo de la base de datos (solo activos)."""
+    """Página principal. Pasa a index.html exactamente estas variables:
+    flores, ramos_clasicos, ramos_temporada, arreglos, extras y contacto
+    (contacto puede ser None; la plantilla lo tolera)."""
     ramos = Ramo.objects.filter(activo=True)
     contexto = {
         "flores": TipoFlor.objects.filter(activo=True),
