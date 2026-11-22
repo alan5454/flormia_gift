@@ -1,4 +1,5 @@
 from django.db import models
+from django.templatetags.static import static
 
 
 class Ordenable(models.Model):
@@ -22,3 +23,15 @@ class ConImagen(Ordenable):
 
     class Meta(Ordenable.Meta):
         abstract = True
+
+    @property
+    def imagen_url(self):
+        """URL lista para <img>, o "" si no hay imagen o la ruta no existe."""
+        if not self.imagen:
+            return ""
+        if self.imagen.startswith(("http://", "https://")):
+            return self.imagen
+        try:
+            return static(self.imagen)
+        except ValueError:  # ruta inexistente con el almacenamiento de producción
+            return ""

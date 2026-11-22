@@ -36,3 +36,4 @@
   .rejilla-arreglos{grid-template-columns:repeat(2,1fr)}
   .seccion{min-height:auto}
 }
+.contacto dd{min-height:2.6rem}

@@ -23,3 +23,5 @@ h3{font-size:1.5rem;color:var(--salvia)}
 /* Hueco de imagen: se reemplaza por <img> en la etapa 2 */
 .img{background:linear-gradient(135deg,var(--rosa-suave),var(--lavanda));aspect-ratio:1;display:grid;place-items:center;color:#fff;font-family:var(--f-titulo);font-size:1.2rem}
 @media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
+/* Imágenes reales (dinámicas) */
+img.img{display:block;width:100%;height:auto;object-fit:cover}

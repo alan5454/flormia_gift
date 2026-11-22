@@ -1,0 +1,6 @@
+<article class="ramo{% if tarjeta %} ramo--tarjeta{% endif %}">
+  {% include "catalogo/partials/imagen.html" with obj=ramo %}
+  <h3>{{ ramo.nombre }}</h3>
+  {% if ramo.descripcion %}<p>{{ ramo.descripcion }}</p>{% endif %}
+  <p class="precio">${{ ramo.precio|floatformat:"-2g" }}</p>
+</article>

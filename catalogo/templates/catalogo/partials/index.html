@@ -1,0 +1,108 @@
+{% extends "catalogo/base.html" %}
+{% load static l10n %}
+
+{% block contenido %}
+<!-- 1. PORTADA -->
+<section class="seccion portada" id="inicio">
+  <span class="mancha mancha--rosa tr"></span><span class="mancha mancha--salvia bl"></span>
+  <div class="ramo-deco"></div>
+  <h1>Convierte un día ordinario en uno especial</h1>
+  <p>Catálogo de flores y arreglos</p>
+</section>
+
+{% if flores %}
+<!-- 2. TIPOS DE FLORES -->
+<section class="seccion" id="flores">
+  <span class="mancha mancha--lavanda tr"></span><span class="mancha mancha--salvia bl"></span>
+  <h2>Tipos de flores</h2>
+  <div class="rejilla-flores">
+    {% for flor in flores %}
+    <article class="flor">
+      {% include "catalogo/partials/imagen.html" with obj=flor %}
+      <div><h3>{{ flor.nombre }}</h3><p>{{ flor.descripcion }}</p></div>
+    </article>
+    {% endfor %}
+  </div>
+</section>
+{% endif %}
+
+{% if ramos_clasicos %}
+<!-- 3. RAMOS CLÁSICOS -->
+<section class="seccion" id="ramos-clasicos">
+  <span class="mancha mancha--lavanda tr"></span><span class="mancha mancha--durazno br"></span>
+  <h2>Ramos clásicos</h2>
+  <div class="rejilla-ramos">
+    {% for ramo in ramos_clasicos %}{% include "catalogo/partials/ramo.html" %}{% endfor %}
+  </div>
+</section>
+{% endif %}
+
+{% if ramos_temporada %}
+<!-- 4. RAMOS DE TEMPORADA -->
+<section class="seccion" id="ramos-temporada">
+  <span class="mancha mancha--rosa tr"></span><span class="mancha mancha--salvia bl"></span>
+  <h2>Ramos de temporada<br>y especiales</h2>
+  <div class="rejilla-ramos">
+    {% for ramo in ramos_temporada %}{% include "catalogo/partials/ramo.html" with tarjeta=True %}{% endfor %}
+  </div>
+</section>
+{% endif %}
+
+{% if arreglos %}
+<!-- 5. ARREGLOS Y DISEÑOS -->
+<section class="seccion" id="arreglos">
+  <span class="mancha mancha--lavanda tr"></span><span class="mancha mancha--salvia bl"></span><span class="mancha mancha--durazno br"></span>
+  <h2>Arreglos y diseños</h2>
+  <div class="rejilla-arreglos">
+    {% for arreglo in arreglos %}
+    <article class="arreglo">
+      {% include "catalogo/partials/imagen.html" with obj=arreglo %}
+      <h3>{{ arreglo.nombre }}</h3><p>{{ arreglo.descripcion }}</p><hr>
+      <p class="precio">${{ arreglo.precio|floatformat:"-2g" }}</p>
+    </article>
+    {% endfor %}
+  </div>
+</section>
+{% endif %}
+
+{% if extras %}
+<!-- 6. PERSONALIZA: los extras seleccionados se suman -->
+<section class="seccion" id="personaliza">
+  <span class="mancha mancha--lavanda tr"></span><span class="mancha mancha--salvia bl"></span>
+  <h2>Personaliza tu arreglo</h2>
+  <div class="personaliza">
+    <div>
+      {% for extra in extras %}
+      <label class="extra">
+        <span class="icono">{{ extra.icono }}</span><h3>{{ extra.nombre }}</h3>
+        <span class="precio">${{ extra.precio|floatformat:"-2g" }}</span>
+        <input type="checkbox" data-precio="{{ extra.precio|unlocalize }}">
+      </label>
+      {% endfor %}
+      <div class="total"><h3>Extras seleccionados</h3><span class="precio" id="total-extras">$0</span></div>
+    </div>
+    <div class="img" style="aspect-ratio:4/3">Arreglo con peluche</div>
+  </div>
+</section>
+{% endif %}
+
+<!-- 7. CONTACTO -->
+<section class="seccion" id="contacto">
+  <span class="mancha mancha--durazno br"></span><span class="mancha mancha--lavanda tl"></span>
+  <div class="contacto">
+    <div>
+      <h2>Haz de hoy<br>un día especial</h2>
+      <p>Estamos aquí para ayudarte a celebrar los momentos importantes.</p>
+      <dl>
+        <dt>Teléfono</dt><dd>{{ contacto.telefono }}</dd>
+        <dt>WhatsApp</dt><dd>{{ contacto.whatsapp }}</dd>
+        <dt>Redes sociales</dt><dd>{{ contacto.redes }}</dd>
+        <dt>Dirección</dt><dd>{{ contacto.direccion }}</dd>
+      </dl>
+    </div>
+    <div class="img">Flores y lino</div>
+  </div>
+</section>
+{% endblock %}
+
+{% block scripts %}<script src="{% static 'js/personalizar.js' %}"></script>{% endblock %}
